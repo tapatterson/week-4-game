@@ -21,16 +21,16 @@
 	<!-- This header holds the "number-to-guess" -->
 	<h2>Number to Guess: <span id="number-to-guess"></span>
 
-	<!-- Here I created a <div>  id to wrap my crystal images -->
+	<!-- Here I created a empty <div>  id to wrap my crystal images -->
 	<div id="crystals">
 
-		<img class="crystal-image" src=assets/images/crystal-image-01.png alt=crystal-1>
+		<!-- <img class="crystal-image" src=assets/images/crystal-image-01.png alt=crystal-1>
 
 		<img class="crystal-image" src=assets/images/crystal-image-02.jpg alt= crystal-2>
 
 		<img class="crystal-image" src=assets/images/crystal-image-03.jpeg alt=crystal-3>
 
-		<img class="crystal-image" src=assets/images/crystal-image-05.jpeg alt=crystal-4>
+		<img class="crystal-image" src=assets/images/crystal-image-05.jpeg alt=crystal-4> -->
 	</div>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -38,60 +38,84 @@
 	// javascript starts here  	
 	//My javascript will be in the game.js file and the link will be above.	
 
-	// Here we set the "targetNumber"
-	var targetNumber= 70;
+		// Here we set the "targetNumber"
+		var targetNumber= 70;
 
-	// Here we created a counter to track the number of times the buttons are clicked or the users total.
-	var counter= 0;
+		// Here we created a counter to track the number of times the buttons are clicked or the users total.
+		var counter= 0;
 
-	// Now set the "number-to-guess" to the "targetNumber" so we can change the HTML to match the value in the JS
-	$("#number-to-guess").text(targetNumber);
+		// Now set the "number-to-guess" to the "targetNumber" so we can change the HTML to match the value in the JS
+		$("#number-to-guess").text(targetNumber);
 
-	// Here we list an array of options for the value of each crystal. This will be set randomly at the beginning of the game.
-	var numberOptions= [10,5,20,1];
-	var increment= numberOptions[Math.round(Math.random())];
+		// Here we list an array of options for the value of each crystal. This will be set randomly at the beginning of the game.
+		var numberOptions= [10,5,20,1];
+		var increment= numberOptions[Math.round(Math.random())];
 
-	// For loop to apply a crystal to every number option
-	for (var i = 0; i < numberOptions.length; i++);{
+		// For loop to apply a crystal to every number option
+		for (var i = 0; i < numberOptions.length; i++);{
 
-		// for each iteration, there will be an image crystal
-		var imageCrystal = $("<img>");
-		var imageCrystal = $("<img>");
-		var imageCrystal = $("<img>");
-		var imageCrystal = $("<img>");
+			// for each iteration, there will be an image crystal
+			var imageCrystal1 = $("<img>");
+			var imageCrystal2 = $("<img>");
+			var imageCrystal3 = $("<img>");
+			var imageCrystal4 = $("<img>");
 
-		// Each crystal is given the class ".crystal-image" to link to the CSS 
-		imageCrystal.addClass("crystal-image");
+			// Each crystal is given the class ".crystal-image" to link to the CSS 
+			imageCrystal1.addClass("crystal-image");
+			imageCrystal2.addClass("crystal-image");
+			imageCrystal3.addClass("crystal-image");
+			imageCrystal4.addClass("crystal-image");
 
-		Each crystal
+			// Each crystal has a src link
+			imageCrystal1.attr("src","assets/images/crystal-image-01.png alt=crystal-1");
+			imageCrystal2.attr("src","assets/images/crystal-image-02.jpg alt= crystal-2");
+			imageCrystal3.attr("src", "assets/images/crystal-image-03.jpeg alt=crystal-3");
+			imageCrystal4.attr("src","assets/images/crystal-image-05.jpeg alt=crystal-4");
+
+			// Each crystal is given a data attribute called data-crystalValue. The data attribute is set equal to the array value.
+			imageCrystal1.attr("data-crystalValue", numberOptions[i]);
+
+			imageCrystal2.attr("data-crystalValue", numberOptions[i]);
+
+			imageCrystal3.attr("data-crystalValue", numberOptions[i]);
+
+			imageCrystal4.attr("data-crystalValue", numberOptions[i]);
+
+			// Finally, each crystal image (with classes and attributes) is added to the page.
+			$("#crystals").append(imageCrystal1);
+			$("#crystals").append(imageCrystal2);
+			$("#crystals").append(imageCrystal3);
+			$("#crystals").append(imageCrystal4);
+
+
 		
-	}
+		}
 
 
-	// Here we set an alert to make sure that the button clicks are activated.
-	$(".crystal-image").on("click", function(){
-		// alert("You clicked a crystal!")
+		// Here we set an alert to make sure that the button clicks are activated.
+		$(".crystal-image").on("click", function(){
+			// alert("You clicked a crystal!")
 
-		// increment counter each time by the randomly selected number
-		counter+= increment;
+			// increment counter each time by the randomly selected number
+			counter+= increment;
 		
-		// Each time the crystal is clicked, the counter goes increases by *10* each time
-		counter+=10;
+			// Each time the crystal is clicked, the counter goes increases by *10* each time
+			counter+=10;
 
-		alert("New score: " + counter);
+			alert("New score: " + counter);
 
-		// Now add some logic to "check" if the click counter matches the targetNumber.
-   		// This click event should be triggered with each click.
-   		// With each click the counter increases by 10 and will be re-evaluated against target.
-   		if (counter===targetNumber){
+			// Now add some logic to "check" if the click counter matches the targetNumber.
+   			// This click event should be triggered with each click.
+   			// With each click the counter increases by 10 and will be re-evaluated against target.
+   			if (counter===targetNumber){
    			// if numbers match then the user wins
    			alert("Congratulations, You win!");
-   		}
+   			}
 
-   		else if (counter>=targetNumber){
-   			//added an else if condition if user number exceeds targetNumber; user loses
-   			alert("Sorry, You lose! Please try again.");
-   		}
+   			else if (counter>=targetNumber){
+   				//added an else if condition if user number exceeds targetNumber; user loses
+   				alert("Sorry, You lose! Please try again.");
+   			}
 
 
 
@@ -101,7 +125,7 @@
 
 
 
-</script>
+	</script>
 	
 </body>
 </html>
