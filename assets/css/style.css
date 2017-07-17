@@ -1,7 +1,10 @@
-<body>
-	<style type="text/css">
-		.crystal-image{
-			width: 200px;
-			height: 200px;
+.crystal-image{
+		width: 200px;
+		height: 200px;
 		}
-	</style>			
+ /*
+ #number-to-guess,
+ #score{
+ 	float: left;
+ }
+			*/

@@ -1,131 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- JQuery -->
+	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 	<title>Crystals Collector Game</title>
-<!-- Here is the CSS properties for the game. -->
-		<style type="text/css">
-			.crystal-image{
-				width: 200px;
-				height: 200px;
-			}
-		</style>
-	
-	<!-- <link rel= "stylesheet" type= "text/css" src="assets/css/reset.css">
-	<link rel="stylesheet" type= "text/css" src="assets/css/style.css">	
-	<link rel="text/javascript" src="assets/javascript/game.js"> -->
+	<!-- Stylesheets -->
+	<link rel= "stylesheet" type= "text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type= "text/css" href="assets/css/style.css">
+	<!-- Bootstrap -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	 -->
+	<!-- <script type="text/javascript" src="assets/javascript/game.js"></script> --> 
+
+	<!-- I could not link my JS to my html so I did everything in html -->
 	
 </head>
 
 <body>
 	<h1>Crystal Collector!!!</h1>
-	<!-- This header holds the "number-to-guess" -->
-	<h2>Number to Guess: <span id="number-to-guess"></span>
+		
+	<br>
+	<br>
+	<br>
 
-	<!-- Here I created a empty <div>  id to wrap my crystal images -->
+	Here are the rules to the game
+	<h2>RULES...</h2>
+		<ul> 
+			<li>*A target number is shown at the start of the game.</li>
+			<li>*There are four crystals. Click a crystal to add points to your score.</li>
+			<li>*To win, match your total score to the target number.</li>
+			<li>*If your total score goes above the target number, you lose.</li>
+			<li>*Each time the game starts, crystal values change.</li>
+		</ul>
+		
+
+	<br>
+	<br>
+	<br>
+
+	<!-- This header holds the "number-to-guess" -->
+	<h2 id="number-to-guess">NUMBER TO GUESS: </h2>
+			
+	<!-- This header holds the score. -->
+	<h2 id="score">SCORE: </h2>
+		
+	<br>
+	<br>
+	<br>
+
+	<!--I created a <div> id to wrap my crystal images -->
 	<div id="crystals">
 
-		<!-- <img class="crystal-image" src=assets/images/crystal-image-01.png alt=crystal-1>
+		<img class="crystal-image" id=imageCrystal1 src="assets/images/crystal-image-01.png" alt=crystal-1>
 
-		<img class="crystal-image" src=assets/images/crystal-image-02.jpg alt= crystal-2>
+		<img class="crystal-image" id=imageCrystal2 src="assets/images/crystal-image-02.jpg" alt= crystal-2>
 
-		<img class="crystal-image" src=assets/images/crystal-image-03.jpeg alt=crystal-3>
+		<img class="crystal-image" id=imageCrystal3 src="assets/images/crystal-image-03.jpeg" alt=crystal-3>
 
-		<img class="crystal-image" src=assets/images/crystal-image-05.jpeg alt=crystal-4> -->
+		<img class="crystal-image" id=imageCrystal4 src="assets/images/crystal-image-05.jpeg" alt=crystal-4>
 	</div>
 
+	<br>
+	<br>
+	<br>
+	
+	<!-- This <div> keeps track of the wins. -->
+	<div id="win">
+		<p>Wins: 0</p> 
+	</div>
+
+	<!-- This <div> keeps track of the losses. -->
+	<div id="lose">
+		<p>Losses: 0</p>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<!-- Link to JQuery -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript">
-	// javascript starts here  	
-	//My javascript will be in the game.js file and the link will be above.	
-
-		// Here we set the "targetNumber"
-		var targetNumber= 70;
-
-		// Here we created a counter to track the number of times the buttons are clicked or the users total.
+	<!-- Javascript starts here. -->
+  	<script type="text/javascript">
+		 // Variables
+  		var targetNumber= getRandomArbitrary(19,120);
 		var counter= 0;
+		var increment1= getRandomArbitrary(1,12);
+		var increment2= getRandomArbitrary(1,12);
+		var increment3= getRandomArbitrary(1,12);
+		var increment4= getRandomArbitrary(1,12);
+		var numberArray= [];
+		var win= 0;
+		var lose= 0;
 
-		// Now set the "number-to-guess" to the "targetNumber" so we can change the HTML to match the value in the JS
-		$("#number-to-guess").text(targetNumber);
-
-		// Here we list an array of options for the value of each crystal. This will be set randomly at the beginning of the game.
-		var numberOptions= [10,5,20,1];
-		var increment= numberOptions[Math.round(Math.random())];
-
-		// For loop to apply a crystal to every number option
-		for (var i = 0; i < numberOptions.length; i++);{
-
-			// for each iteration, there will be an image crystal
-			var imageCrystal1 = $("<img>");
-			var imageCrystal2 = $("<img>");
-			var imageCrystal3 = $("<img>");
-			var imageCrystal4 = $("<img>");
-
-			// Each crystal is given the class ".crystal-image" to link to the CSS 
-			imageCrystal1.addClass("crystal-image");
-			imageCrystal2.addClass("crystal-image");
-			imageCrystal3.addClass("crystal-image");
-			imageCrystal4.addClass("crystal-image");
-
-			// Each crystal has a src link
-			imageCrystal1.attr("src","assets/images/crystal-image-01.png alt=crystal-1");
-			imageCrystal2.attr("src","assets/images/crystal-image-02.jpg alt= crystal-2");
-			imageCrystal3.attr("src", "assets/images/crystal-image-03.jpeg alt=crystal-3");
-			imageCrystal4.attr("src","assets/images/crystal-image-05.jpeg alt=crystal-4");
-
-			// Each crystal is given a data attribute called data-crystalValue. The data attribute is set equal to the array value.
-			imageCrystal1.attr("data-crystalValue", numberOptions[i]);
-
-			imageCrystal2.attr("data-crystalValue", numberOptions[i]);
-
-			imageCrystal3.attr("data-crystalValue", numberOptions[i]);
-
-			imageCrystal4.attr("data-crystalValue", numberOptions[i]);
-
-			// Finally, each crystal image (with classes and attributes) is added to the page.
-			$("#crystals").append(imageCrystal1);
-			$("#crystals").append(imageCrystal2);
-			$("#crystals").append(imageCrystal3);
-			$("#crystals").append(imageCrystal4);
-
-
-		
+		// Function to generate random numbers
+		function getRandomArbitrary(min,max){
+			return Math.floor(Math.random()* (max-min +1) + min);
 		}
 
+		// This puts number to guess on browser page.
+		$("#number-to-guess").text("NUMBER TO GUESS: " + targetNumber);
 
-		// Here we set an alert to make sure that the button clicks are activated.
-		$(".crystal-image").on("click", function(){
-			// alert("You clicked a crystal!")
+		// Now, once we click on image the following will generate a random number that changes with each game.
 
-			// increment counter each time by the randomly selected number
-			counter+= increment;
-		
-			// Each time the crystal is clicked, the counter goes increases by *10* each time
-			counter+=10;
+		$(".crystal-image").on("click", function() {
+			
 
-			alert("New score: " + counter);
+			if($(event.target).attr("id")=="imageCrystal1"){
+			counter+=increment1;
+		}
+			if($(event.target).attr("id")=="imageCrystal2"){
+			counter+=increment2;
+		}
+			if($(event.target).attr("id")=="imageCrystal3"){
+			counter+=increment3;
+		}
+			if($(event.target).attr("id")=="imageCrystal4"){
+			counter+=increment4;
+		}
 
-			// Now add some logic to "check" if the click counter matches the targetNumber.
-   			// This click event should be triggered with each click.
-   			// With each click the counter increases by 10 and will be re-evaluated against target.
-   			if (counter===targetNumber){
-   			// if numbers match then the user wins
-   			alert("Congratulations, You win!");
-   			}
+		// As the images are clicked, the score, and if each game is a win/lose appears on the page
+   			
+   		$("#score").text("SCORE: " + counter);
+   		$("#win").text("WINS: "  + win);
+   		$("#lose").text("LOSSES: " + lose);
 
-   			else if (counter>=targetNumber){
-   				//added an else if condition if user number exceeds targetNumber; user loses
-   				alert("Sorry, You lose! Please try again.");
-   			}
+   		if (counter=== targetNumber){
+   		 	alert("You win!");
+   		 	win++;
+   		 	reset();
+   		}
 
+   		 if (counter>= targetNumber){
+   		 	alert("Sorry, you lose! Try again.")
+   		 	lose++;
+   		 	reset();
+   		}
+   	
+   		// This code resets the game.	
+   		function reset(){
+	  	counter =0;
+	  	targetNumber =getRandomArbitrary(19,120);
+	  	var increment1 = getRandomArbitrary(1,12);
+		var increment2 = getRandomArbitrary(1,12);
+		var increment3 = getRandomArbitrary(1,12);
+		var increment4 = getRandomArbitrary(1,12);
+		var numberArray = [];
+		var win= 0;
+		var lose= 0;
+  		alert("PLAY AGAIN?");
+  		$("#score").text("SCORE: " + counter);
+  		$("#number-to-guess").text("NUMBER TO GUESS: "+ targetNumber);
+  		$("#win").text("WINS: "  + win);
+  		$("#lose").text("LOSSES: " + lose);
+  		}
+   	//Wins and losses disappear after you click ok to play again but it does not erase/reset the number of wins/losses. They show up once you start the next game.
+   
+ 	});
 
-
-
-		});
-
-
-
-
-	</script>
-	
+   		
+  </script>
 </body>
 </html>
+
+
+
+	
