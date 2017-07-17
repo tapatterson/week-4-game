@@ -6,8 +6,10 @@
 
 	<title>Crystals Collector Game</title>
 	<!-- Stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Average|Tangerine|Work+Sans|Yeseva+One" rel="stylesheet">
 	<link rel= "stylesheet" type= "text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type= "text/css" href="assets/css/style.css">
+
 	<!-- Bootstrap -->
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	 -->
@@ -18,14 +20,11 @@
 </head>
 
 <body>
-	<h1>Crystal Collector!!!</h1>
-		
+	<div class="container">
+	<h1 class="title">Crystal Collector!!!</h1>
 	<br>
-	<br>
-	<br>
-
-	Here are the rules to the game
-	<h2>RULES...</h2>
+	<div id="rules">
+		<p>RULES...</p>
 		<ul> 
 			<li>*A target number is shown at the start of the game.</li>
 			<li>*There are four crystals. Click a crystal to add points to your score.</li>
@@ -33,21 +32,23 @@
 			<li>*If your total score goes above the target number, you lose.</li>
 			<li>*Each time the game starts, crystal values change.</li>
 		</ul>
-		
-
-	<br>
-	<br>
-	<br>
-
+	</div>	
+	
 	<!-- This header holds the "number-to-guess" -->
 	<h2 id="number-to-guess">NUMBER TO GUESS: </h2>
 			
 	<!-- This header holds the score. -->
 	<h2 id="score">SCORE: </h2>
-		
-	<br>
-	<br>
-	<br>
+
+	<!-- This <div> keeps track of the wins. -->
+	<div id="win">
+		<p>Wins: 0</p> 
+	</div>
+
+	<!-- This <div> keeps track of the losses. -->
+	<div id="lose">
+		<p>Losses: 0</p>
+	</div>
 
 	<!--I created a <div> id to wrap my crystal images -->
 	<div id="crystals">
@@ -61,23 +62,6 @@
 		<img class="crystal-image" id=imageCrystal4 src="assets/images/crystal-image-05.jpeg" alt=crystal-4>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	
-	<!-- This <div> keeps track of the wins. -->
-	<div id="win">
-		<p>Wins: 0</p> 
-	</div>
-
-	<!-- This <div> keeps track of the losses. -->
-	<div id="lose">
-		<p>Losses: 0</p>
-	</div>
-
-	<br>
-	<br>
-	<br>
 	<!-- Link to JQuery -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Javascript starts here. -->
@@ -160,6 +144,7 @@
 
    		
   </script>
+  </div>
 </body>
 </html>
 

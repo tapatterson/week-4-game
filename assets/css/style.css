@@ -1,10 +1,47 @@
+body{
+	background-color: #A9A9A9;
+	font-family: 'Average', serif;
+	font-weight: bolder;
+	line-height: 34px;
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
+.container{
+	width: 100%;
+  	max-width: 960px;
+  	margin: 0 auto;
+  	clear: both;
+}
+
+
+.title{
+	font-family: 'Tangerine', cursive;
+	font-size: 100px;
+	font-weight: bolder;
+	text-align: center;
+	margin: 0 auto; 
+}
+
+#rules{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+
+
+}
+
 .crystal-image{
 		width: 200px;
 		height: 200px;
-		}
- /*
+}
+ 
  #number-to-guess,
- #score{
- 	float: left;
+ #score,
+ #win,
+ #lose{
+ 	font-family: 'Yeseva One', cursive;
+ 	
  }
-			*/
+			
